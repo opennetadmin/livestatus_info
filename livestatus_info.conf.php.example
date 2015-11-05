@@ -1,0 +1,35 @@
+<?php
+
+$livestatusservers = Array();
+/*
+ * Add all of your livestatus servers here.
+ * You can add multiple by incrementing the instance name
+ */
+
+// Create a new named livestatusserver instance
+$livestatusservers['Main'] = Array(
+    // The socket type can be 'unix' for connecting with the unix socket or 'tcp'
+    // to connect to a tcp socket.
+    'socketType'       => 'tcp',
+    // When using a unix socket the path to the socket needs to be set
+    // Not used when using the TCP socketType.
+    'socketPath'       => '/var/run/nagios/rw/live',
+    // When using a tcp socket the address and port needs to be set
+    'socketAddress'    => 'livestatus.example.com',
+    'socketPort'       => '6557',
+    // The main URL to access the view of this host natively
+    // The FQDN of the host will be appended to the end of the url
+    // so you must ensure the query string ends appropriately
+    //'viewURL'          => 'https://thruk.example.com/thruk/#cgi-bin/status.cgi?s0_type=search&s0_value=',
+    'viewURL'          => 'https://nagios.example.com/cgi-bin/nagios3/status.cgi?host=',
+);
+
+// Example second instance if needed
+//$livestatusservers['Location2'] = Array(
+//    'socketType'       => 'tcp',
+//    'socketAddress'    => 'backuplivestatus.example.com',
+//    'socketPort'       => '6557',
+//    'viewURL'          => 'https://thruk.example.com/thruk/#cgi-bin/status.cgi?s0_type=search&s0_value=',
+//);
+
+?>
